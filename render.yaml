@@ -1,0 +1,14 @@
+# Render.com blueprint: runs the Node server (site + rooms + chat + video signaling) in one service.
+services:
+  - type: web
+    name: cinetogether
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: NODE_ENV
+        value: production
